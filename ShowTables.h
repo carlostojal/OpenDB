@@ -6,13 +6,14 @@ class ShowTables
 {
 	public:
 		ShowTables();
-		ShowTables(TableList tables);
+		ShowTables(TableList* tables);
 		void render();
 
 	private:
-		TableList tables;
+		TableList* tables;
 		void showTableNames();
 		int menu();
 		void showStructure(Table table);
+		void showData(Table table);
 };
 

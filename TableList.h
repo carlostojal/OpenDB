@@ -8,7 +8,7 @@ class TableList
 	public:
 		TableList();
 		void addTable(Table table);
-		Table getTableByIndex(int index);
+		Table* getTableByIndex(int index);
 		void removeTableByIndex(int index);
 		int getSize();
 

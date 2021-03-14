@@ -28,7 +28,7 @@ void TableList::addTable(Table table)
 	}
 }
 
-Table TableList::getTableByIndex(int index)
+Table* TableList::getTableByIndex(int index)
 {
 	TableNode* temp = head;
 
@@ -39,13 +39,13 @@ Table TableList::getTableByIndex(int index)
 	{
 		// if the index is the one we searching
 		if (i == index)
-			return temp->value;
+			return &temp->value;
 		i++;
 
 		temp = temp->next;
 	}
 
-	return Table();
+	return new Table();
 }
 
 void TableList::removeTableByIndex(int index)

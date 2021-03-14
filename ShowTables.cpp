@@ -4,10 +4,10 @@ using namespace std;
 
 ShowTables::ShowTables()
 {
-	tables = TableList();
+	tables = new TableList();
 }
 
-ShowTables::ShowTables(TableList tables1)
+ShowTables::ShowTables(TableList* tables1)
 {
 	tables = tables1;
 }
@@ -22,7 +22,7 @@ void ShowTables::render()
 	cout << "\nTable Number: ";
 	cin >> tableNumber;
 
-	Table table = tables.getTableByIndex(tableNumber - 1);
+	Table* table = tables->getTableByIndex(tableNumber - 1);
 
 	int opt;
 
@@ -31,8 +31,10 @@ void ShowTables::render()
 	switch (opt)
 	{
 		case 1:
-			showStructure(table);
+			showStructure(*table);
 			break;
+		case 2:
+			showData(*table);
 	}
 }
 
@@ -40,8 +42,8 @@ void ShowTables::showTableNames()
 {
 	cout << endl;
 
-	for (int i = 0; i < tables.getSize(); i++)
-		cout << i + 1 << ") " << tables.getTableByIndex(i).name << endl;
+	for (int i = 0; i < tables->getSize(); i++)
+		cout << i + 1 << ") " << tables->getTableByIndex(i)->name << endl;
 }
 
 int ShowTables::menu()
@@ -68,6 +70,27 @@ void ShowTables::showStructure(Table table)
 
 	ColumnList cols = table.structure;
 
-	for (int j = 0; j < cols.getSize(); j++)
-		cout << j + 1 << ") " << cols.getColumnByIndex(j).name << endl;
+	for (int i = 0; i < cols.getSize(); i++)
+		cout << i + 1 << ") " << cols.getColumnByIndex(i).name << endl;
+}
+
+void ShowTables::showData(Table table)
+{
+	cout << "\n** " << table.name << " **" << endl;
+	cout << endl;
+
+	ColumnList cols = table.structure;
+	RowList rows = table.data;
+
+	for (int i = 0; i < cols.getSize(); i++)
+		cout << cols.getColumnByIndex(i).name << "\t|\t";
+
+	cout << endl;
+
+	for (int i = 0; i < rows.getSize(); i++)
+	{
+		for (int j = 0; j < rows.getRowByIndex(i)->cols.getSize(); j++)
+			cout << rows.getRowByIndex(i)->cols.getColumnByIndex(j).value << "\t|\t";
+		cout << endl;
+	}
 }

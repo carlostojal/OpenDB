@@ -143,7 +143,11 @@
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="ColumnList.cpp" />
     <ClCompile Include="ColumnNode.cpp" />
+    <ClCompile Include="InsertData.cpp" />
     <ClCompile Include="opendb.cpp" />
+    <ClCompile Include="Row.cpp" />
+    <ClCompile Include="RowList.cpp" />
+    <ClCompile Include="RowNode.cpp" />
     <ClCompile Include="ShowTables.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TableList.cpp" />
@@ -154,6 +158,10 @@
     <ClInclude Include="Column.h" />
     <ClInclude Include="ColumnList.h" />
     <ClInclude Include="ColumnNode.h" />
+    <ClInclude Include="InsertData.h" />
+    <ClInclude Include="Row.h" />
+    <ClInclude Include="RowList.h" />
+    <ClInclude Include="RowNode.h" />
     <ClInclude Include="ShowTables.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="TableList.h" />
