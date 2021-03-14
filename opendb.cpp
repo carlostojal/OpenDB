@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
+#include "AddTable.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    AddTable addTable = AddTable();
+
+    addTable.render();
 }
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração

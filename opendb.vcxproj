@@ -139,7 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddTable.cpp" />
+    <ClCompile Include="Column.cpp" />
+    <ClCompile Include="ColumnList.cpp" />
+    <ClCompile Include="ColumnNode.cpp" />
     <ClCompile Include="opendb.cpp" />
+    <ClCompile Include="Table.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddTable.h" />
+    <ClInclude Include="Column.h" />
+    <ClInclude Include="ColumnList.h" />
+    <ClInclude Include="ColumnNode.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Table.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="opendb.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
