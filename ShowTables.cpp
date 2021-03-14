@@ -19,7 +19,7 @@ void ShowTables::render()
 
 	cout << "\n** Tables **" << endl;
 	showTableNames();
-	cout << "Table Number: " << endl;
+	cout << "Table Number: ";
 	cin >> tableNumber;
 
 	int opt;
