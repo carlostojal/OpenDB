@@ -59,9 +59,6 @@
     <ClInclude Include="ColumnNode.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="TableList.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
@@ -71,10 +68,5 @@
     <ClInclude Include="ShowTables.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="opendb.rc">
-      <Filter>Arquivos de Recurso</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

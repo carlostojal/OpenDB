@@ -19,8 +19,10 @@ void ShowTables::render()
 
 	cout << "\n** Tables **" << endl;
 	showTableNames();
-	cout << "Table Number: ";
+	cout << "\nTable Number: ";
 	cin >> tableNumber;
+
+	Table table = tables.getTableByIndex(tableNumber - 1);
 
 	int opt;
 
@@ -29,7 +31,7 @@ void ShowTables::render()
 	switch (opt)
 	{
 		case 1:
-			showStructure();
+			showStructure(table);
 			break;
 	}
 }
@@ -59,16 +61,13 @@ int ShowTables::menu()
 	return opt;
 }
 
-void ShowTables::showStructure()
+void ShowTables::showStructure(Table table)
 {
-	for (int i = 0; i < tables.getSize(); i++)
-	{
-		cout << "\n** " << tables.getTableByIndex(i).name << " **" << endl;
-		cout << endl;
+	cout << "\n** " << table.name << " **" << endl;
+	cout << endl;
 
-		ColumnList cols = tables.getTableByIndex(i).structure;
+	ColumnList cols = table.structure;
 
-		for (int j = 0; j < cols.getSize(); j++)
-			cout << j + 1 << ") " << cols.getColumnByIndex(j).name << endl;
-	}
+	for (int j = 0; j < cols.getSize(); j++)
+		cout << j + 1 << ") " << cols.getColumnByIndex(j).name << endl;
 }

@@ -154,14 +154,10 @@
     <ClInclude Include="Column.h" />
     <ClInclude Include="ColumnList.h" />
     <ClInclude Include="ColumnNode.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ShowTables.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="TableList.h" />
     <ClInclude Include="TableNode.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="opendb.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

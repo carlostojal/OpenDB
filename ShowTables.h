@@ -13,6 +13,6 @@ class ShowTables
 		TableList tables;
 		void showTableNames();
 		int menu();
-		void showStructure();
+		void showStructure(Table table);
 };
 
