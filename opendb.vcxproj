@@ -144,7 +144,10 @@
     <ClCompile Include="ColumnList.cpp" />
     <ClCompile Include="ColumnNode.cpp" />
     <ClCompile Include="opendb.cpp" />
+    <ClCompile Include="ShowTables.cpp" />
     <ClCompile Include="Table.cpp" />
+    <ClCompile Include="TableList.cpp" />
+    <ClCompile Include="TableNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddTable.h" />
@@ -152,7 +155,10 @@
     <ClInclude Include="ColumnList.h" />
     <ClInclude Include="ColumnNode.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ShowTables.h" />
     <ClInclude Include="Table.h" />
+    <ClInclude Include="TableList.h" />
+    <ClInclude Include="TableNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="opendb.rc" />

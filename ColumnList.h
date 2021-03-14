@@ -8,10 +8,12 @@ class ColumnList
 	public:
 		ColumnList();
 		void addColumn(Column col); // add column to list
-		void removeColumn(std::string name); // remove column by name
-		void show(bool showValue);
+		Column getColumnByIndex(int index);
+		void removeColumnByIndex(int index); // remove column by index
+		void removeColumnByName(std::string name); // remove column by name
+		int getSize();
 
 	private:
-		ColumnNode *head;
+		ColumnNode* head;
 };
 

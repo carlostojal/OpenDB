@@ -10,9 +10,6 @@ void ColumnList::addColumn(Column col)
 	// the new node to be inserted based on a column
 	ColumnNode* node = new ColumnNode(col);
 
-	// temporary node to iterate list
-	
-
 	// is the first list node
 	if (head == NULL)
 	{
@@ -20,6 +17,7 @@ void ColumnList::addColumn(Column col)
 	}
 	else
 	{
+		// temporary node to iterate list
 		ColumnNode* temp = head;
 
 		// iterate list
@@ -31,7 +29,46 @@ void ColumnList::addColumn(Column col)
 	}
 }
 
-void ColumnList::removeColumn(std::string name)
+Column ColumnList::getColumnByIndex(int index)
+{
+	ColumnNode* temp = head;
+
+	int i = 0;
+
+	// iterate list
+	while (temp != NULL)
+	{
+		// if the index is the one we searching
+		if (i == index)
+			return temp->value;
+		i++;
+
+		temp = temp->next;
+	}
+
+	return Column();
+}
+
+void ColumnList::removeColumnByIndex(int index)
+{
+	ColumnNode* temp = head;
+
+	int i = 0;
+
+	// iterate list
+	while (temp->next != NULL)
+	{
+		if (i + 1 == index)
+		{
+			temp->next = temp->next->next;
+			break;
+		}
+		temp = temp->next;
+		i++;
+	}
+}
+
+void ColumnList::removeColumnByName(std::string name)
 {
 	ColumnNode* temp = head;
 
@@ -45,15 +82,17 @@ void ColumnList::removeColumn(std::string name)
 	}
 }
 
-void ColumnList::show(bool showValue) 
+int ColumnList::getSize()
 {
+	int size = 0;
+
 	ColumnNode* temp = head;
+
 	while (temp != NULL)
 	{
-		std::cout << "Name: " << temp->value.name << std::endl;
-		if (showValue)
-			std::cout << "Value: " << temp->value.value << std::endl;
-
+		size++;
 		temp = temp->next;
 	}
+
+	return size;
 }

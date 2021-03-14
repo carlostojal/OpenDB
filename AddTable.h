@@ -7,13 +7,14 @@ class AddTable
 {
 	public:
 		AddTable();
-		void render();
+		Table render();
 		void save();
 	
 	private:
 		Table table;
 		int renderMenu();
 		void addColumn();
+		void removeColumn();
 		void listColumns();
 };
 
