@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "TableList.h"
+#include "Table.h"
 
 class ShowTables
 {

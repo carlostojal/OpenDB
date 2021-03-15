@@ -2,12 +2,14 @@
 
 #include <iostream>
 
+using namespace std;
+
 class Column
 {
 	public:
 		Column();
-		Column(std::string name, std::string value);
-		std::string name;
-		std::string value;
+		Column(string name, string value);
+		string name;
+		string value;
 };
 
