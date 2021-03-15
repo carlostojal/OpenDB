@@ -16,34 +16,44 @@ void ShowTables::render()
 	int tableNumber;
 
 	cout << "\n** Tables **" << endl;
-	showTableNames();
-	cout << "\nTable Number: ";
-	cin >> tableNumber;
 
-	Table* table = &tables->at(tableNumber - 1);
-
-	int opt;
-
-	opt = menu();
-
-	switch (opt)
+	if (tables->size() == 0)
 	{
-		case 1:
-			showStructure(*table);
-			break;
-		case 2:
-			showData(*table);
-			break;
-		case 3:
-			InsertData(table).render();
-			break;
+		cout << "\nNo tables." << endl;
+	}
+	else
+	{
+		showTableNames();
+		cout << "\nTable Number: ";
+		cin >> tableNumber;
+
+		Table* table = &tables->at(tableNumber - 1);
+
+		int opt;
+
+		do
+		{
+			opt = menu();
+
+			switch (opt)
+			{
+			case 1:
+				showStructure(*table);
+				break;
+			case 2:
+				showData(*table);
+				break;
+			case 3:
+				InsertData(table).render();
+				break;
+			}
+
+		} while (opt != 0);
 	}
 }
 
 void ShowTables::showTableNames()
 {
-	cout << endl;
-
 	for (unsigned int i = 0; i < tables->size(); i++)
 		cout << i + 1 << ") " << tables->at(i).name << endl;
 }

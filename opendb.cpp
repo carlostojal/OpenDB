@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
 #include "Table.h"
 #include "AddTable.h"
 #include "ShowTables.h"
@@ -9,10 +11,21 @@
 using namespace std;
 
 int menu();
+vector<string> getTableNames();
 
 int main()
 {
     vector<Table> tables;
+
+    // get table names from "tables.list" file
+    vector<string> tableNames = getTableNames();
+
+    for (unsigned int i = 0; i < tableNames.size(); i++)
+    {
+        Table t = Table(); // create new empty table
+        t.load(tableNames.at(i)); // load table by name
+        tables.push_back(t); // add table to table vector
+    }
 
     int opt;
 
@@ -49,4 +62,22 @@ int menu()
     } while (opt < 0 || opt > 2);
 
     return opt;
+}
+
+vector<string> getTableNames()
+{
+
+    vector<string> tableNames;
+
+    string temp;
+
+    ifstream f("data/tables.list");
+
+
+    while (f >> temp)
+        tableNames.push_back(temp);
+
+    f.close();
+
+    return tableNames;
 }

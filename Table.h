@@ -13,6 +13,7 @@ class Table
 		Table();
 		Table(string name);
 		Table(string name, vector<Column> structure);
+		void load(string name);
 		void saveStructure();
 		void saveData();
 		string name;

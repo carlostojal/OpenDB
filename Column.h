@@ -8,6 +8,7 @@ class Column
 {
 	public:
 		Column();
+		Column(string name);
 		Column(string name, string value);
 		string name;
 		string value;
