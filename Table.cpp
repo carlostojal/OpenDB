@@ -49,9 +49,7 @@ void Table::saveData()
 	for (unsigned int i = 0; i < data.size(); i++)
 	{
 		for (unsigned int j = 0; j < data.at(i).cols.size(); j++)
-		{
 			f << data.at(i).cols.at(j).value << ";";
-		}
 		f << endl;
 	}
 	f.close();
