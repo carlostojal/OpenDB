@@ -2,10 +2,10 @@
 
 Row::Row()
 {
-	cols = ColumnList();
+
 }
 
-Row::Row(ColumnList cols1)
+Row::Row(vector<Column> cols1)
 {
 	cols = cols1;
 }

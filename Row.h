@@ -1,12 +1,16 @@
 #pragma once
 
-#include "ColumnList.h"
+#include "Column.h"
+
+#include <vector>
+
+using namespace std;
 
 class Row
 {
 	public:
 		Row();
-		Row(ColumnList cols);
-		ColumnList cols;
+		Row(vector<Column> cols);
+		vector<Column> cols;
 };
 

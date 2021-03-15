@@ -1,16 +1,16 @@
 #pragma once
 
+#include <vector>
 #include "TableList.h"
 
 class ShowTables
 {
 	public:
-		ShowTables();
-		ShowTables(TableList* tables);
+		ShowTables(vector<Table>* tables);
 		void render();
 
 	private:
-		TableList* tables;
+		vector<Table>* tables;
 		void showTableNames();
 		int menu();
 		void showStructure(Table table);

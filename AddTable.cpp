@@ -2,6 +2,8 @@
 
 #include <fstream>
 
+using namespace std;
+
 AddTable::AddTable()
 {
 	table = Table();
@@ -11,9 +13,9 @@ Table AddTable::render()
 {
 	int menuOpt;
 	
-	std::cout << "\n** Add Table **" << std::endl;
-	std::cout << "\nName: ";
-	std::cin >> table.name;
+	cout << "\n** Add Table **" << endl;
+	cout << "\nName: ";
+	cin >> table.name;
 	
 	// show menu until the "finish" option is chosen
 	do
@@ -47,12 +49,12 @@ int AddTable::renderMenu()
 	int opt;
 	do
 	{
-		std::cout << "\n1. Add Column" << std::endl;
-		std::cout << "2. Remove Column" << std::endl;
-		std::cout << "3. List Columns" << std::endl;
-		std::cout << "0. Back" << std::endl;
-		std::cout << "\nOption: ";
-		std::cin >> opt;
+		cout << "\n1. Add Column" << endl;
+		cout << "2. Remove Column" << endl;
+		cout << "3. List Columns" << endl;
+		cout << "0. Back" << endl;
+		cout << "\nOption: ";
+		cin >> opt;
 
 	} while (opt < 0 || opt > 3);
 
@@ -69,29 +71,29 @@ void AddTable::addColumn()
 	std::cin >> col.name;
 
 	// adds the column created to the table structure
-	table.structure.addColumn(col);
+	table.structure.push_back(col);
 }
 
 void AddTable::removeColumn()
 {
-	int index;
+	unsigned int index;
 
 	do 
 	{
 		std::cout << "\n** Remove Column **" << std::endl;
 		std::cout << "\nNumber: ";
 		std::cin >> index;
-	} while (index < 1 || index > table.structure.getSize());
+	} while (index < 1 || index > table.structure.size());
 
-	table.structure.removeColumnByIndex(index - 1);
+	table.structure.erase(table.structure.begin() + index - 1);
 }
 
 void AddTable::listColumns()
 {
 	std::cout << "\n** List Columns **\n" << std::endl;
 
-	for (int i = 0; i < table.structure.getSize(); i++)
-		std::cout << i + 1 << ") " << table.structure.getColumnByIndex(i).name << std::endl;
+	for (unsigned int i = 0; i < table.structure.size(); i++)
+		std::cout << i + 1 << ") " << table.structure.at(i).name << std::endl;
 }
 
 
@@ -99,8 +101,8 @@ void AddTable::save()
 {
 	std::ofstream f("data/" + table.name + ".struct");
 	
-	for (int i = 0; i < table.structure.getSize(); i++)
-		f << table.structure.getColumnByIndex(i).name << std::endl;
+	for (unsigned int i = 0; i < table.structure.size(); i++)
+		f << table.structure.at(i).name << std::endl;
 
 	f.close();
 }

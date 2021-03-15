@@ -1,13 +1,11 @@
+#include <vector>
+
 #include "ShowTables.h"
+#include "InsertData.h"
 
 using namespace std;
 
-ShowTables::ShowTables()
-{
-	tables = new TableList();
-}
-
-ShowTables::ShowTables(TableList* tables1)
+ShowTables::ShowTables(vector<Table>* tables1)
 {
 	tables = tables1;
 }
@@ -22,7 +20,7 @@ void ShowTables::render()
 	cout << "\nTable Number: ";
 	cin >> tableNumber;
 
-	Table* table = tables->getTableByIndex(tableNumber - 1);
+	Table* table = &tables->at(tableNumber - 1);
 
 	int opt;
 
@@ -35,6 +33,10 @@ void ShowTables::render()
 			break;
 		case 2:
 			showData(*table);
+			break;
+		case 3:
+			InsertData(table).render();
+			break;
 	}
 }
 
@@ -42,8 +44,8 @@ void ShowTables::showTableNames()
 {
 	cout << endl;
 
-	for (int i = 0; i < tables->getSize(); i++)
-		cout << i + 1 << ") " << tables->getTableByIndex(i)->name << endl;
+	for (unsigned int i = 0; i < tables->size(); i++)
+		cout << i + 1 << ") " << tables->at(i).name << endl;
 }
 
 int ShowTables::menu()
@@ -54,11 +56,12 @@ int ShowTables::menu()
 	{
 		cout << "\n1. Show Structure" << endl;
 		cout << "2. Show Data" << endl;
+		cout << "3. Insert Data" << endl;
 		cout << "0. Back" << endl;
 		cout << "\nOption: ";
 
 		cin >> opt;
-	} while (opt < 0 || opt > 2);
+	} while (opt < 0 || opt > 3);
 
 	return opt;
 }
@@ -68,10 +71,10 @@ void ShowTables::showStructure(Table table)
 	cout << "\n** " << table.name << " **" << endl;
 	cout << endl;
 
-	ColumnList cols = table.structure;
+	vector<Column> cols = table.structure;
 
-	for (int i = 0; i < cols.getSize(); i++)
-		cout << i + 1 << ") " << cols.getColumnByIndex(i).name << endl;
+	for (unsigned int i = 0; i < cols.size(); i++)
+		cout << i + 1 << ") " << cols.at(i).name << endl;
 }
 
 void ShowTables::showData(Table table)
@@ -79,18 +82,18 @@ void ShowTables::showData(Table table)
 	cout << "\n** " << table.name << " **" << endl;
 	cout << endl;
 
-	ColumnList cols = table.structure;
-	RowList rows = table.data;
+	vector<Column> cols = table.structure;
+	vector<Row> rows = table.data;
 
-	for (int i = 0; i < cols.getSize(); i++)
-		cout << cols.getColumnByIndex(i).name << "\t|\t";
+	for (unsigned int i = 0; i < cols.size(); i++)
+		cout << cols.at(i).name << "\t|\t";
 
 	cout << endl;
 
-	for (int i = 0; i < rows.getSize(); i++)
+	for (unsigned int i = 0; i < rows.size(); i++)
 	{
-		for (int j = 0; j < rows.getRowByIndex(i)->cols.getSize(); j++)
-			cout << rows.getRowByIndex(i)->cols.getColumnByIndex(j).value << "\t|\t";
+		for (unsigned int j = 0; j < rows.at(i).cols.size(); j++)
+			cout << rows.at(i).cols.at(j).value << "\t|\t";
 		cout << endl;
 	}
 }

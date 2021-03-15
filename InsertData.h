@@ -1,18 +1,16 @@
 #pragma once
 
-#include "TableList.h"
+#include <vector>
+#include "Table.h"
 
 class InsertData
 {
 	public:
-		InsertData();
-		InsertData(TableList* tables);
+		InsertData(Table* table);
 		void render();
 
 	private:
-		TableList* tables;
-		void showTableNames();
-		void insert(Table* table);
+		Table* table;
 		
 };
 

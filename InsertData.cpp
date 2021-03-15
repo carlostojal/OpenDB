@@ -2,48 +2,22 @@
 
 using namespace std;
 
-InsertData::InsertData()
+InsertData::InsertData(Table* table1)
 {
-	tables = new TableList();
-}
-
-InsertData::InsertData(TableList* tables1)
-{
-	tables = tables1;
+	table = table1;
 }
 
 void InsertData::render()
 {
+	vector<Column> cols = table->structure;
 
-	int tableNumber;
+	vector<Column> data;
 
-	cout << "\n** Tables **" << endl;
-	showTableNames();
-	cout << "\nTable Number: ";
-	cin >> tableNumber;
+	cout << "\n** Insert into \"" << table->name << "\" **\n" << endl;
 
-	Table* table = tables->getTableByIndex(tableNumber - 1);
-
-	insert(table);
-}
-
-void InsertData::showTableNames()
-{
-	cout << endl;
-
-	for (int i = 0; i < tables->getSize(); i++)
-		cout << i + 1 << ") " << tables->getTableByIndex(i)->name << endl;
-}
-
-void InsertData::insert(Table* table)
-{
-	ColumnList cols = table->structure;
-
-	ColumnList data = ColumnList();
-
-	for (int i = 0; i < cols.getSize(); i++)
+	for (unsigned int i = 0; i < cols.size(); i++)
 	{
-		Column currentCol = cols.getColumnByIndex(i);
+		Column currentCol = cols.at(i);
 		Column newCol = Column();
 
 		newCol.name = currentCol.name;
@@ -51,10 +25,10 @@ void InsertData::insert(Table* table)
 		cout << currentCol.name << ": ";
 		cin >> newCol.value;
 
-		data.addColumn(newCol);
+		data.push_back(newCol);
 	}
 
 	Row row = Row(data);
 
-	table->data.addRow(row);
+	table->data.push_back(row);
 }

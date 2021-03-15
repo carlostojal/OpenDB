@@ -1,17 +1,20 @@
 #pragma once
 
 #include <iostream>
-#include "ColumnList.h"
-#include "RowList.h"
+#include <vector>
+#include "Column.h"
+#include "Row.h"
+
+using namespace std;
 
 class Table
 {
 	public:
 		Table();
-		Table(std::string name);
-		Table(std::string name, ColumnList structure);
-		std::string name;
-		ColumnList structure;
-		RowList data;
+		Table(string name);
+		Table(string name, vector<Column> structure);
+		string name;
+		vector<Column> structure;
+		vector<Row> data;
 };
 
