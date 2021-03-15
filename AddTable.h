@@ -8,7 +8,6 @@ class AddTable
 	public:
 		AddTable();
 		Table render();
-		void save();
 	
 	private:
 		Table table;

@@ -6,6 +6,7 @@ using namespace std;
 
 AddTable::AddTable()
 {
+	// new table to be added
 	table = Table();
 }
 
@@ -39,7 +40,7 @@ Table AddTable::render()
 	} while (menuOpt != 0);
 
 	// save in the end of execution
-	save();
+	table.save();
 
 	return table;
 }
@@ -94,15 +95,4 @@ void AddTable::listColumns()
 
 	for (unsigned int i = 0; i < table.structure.size(); i++)
 		std::cout << i + 1 << ") " << table.structure.at(i).name << std::endl;
-}
-
-
-void AddTable::save()
-{
-	std::ofstream f("data/" + table.name + ".struct");
-	
-	for (unsigned int i = 0; i < table.structure.size(); i++)
-		f << table.structure.at(i).name << std::endl;
-
-	f.close();
 }
