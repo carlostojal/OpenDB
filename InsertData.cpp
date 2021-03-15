@@ -31,4 +31,6 @@ void InsertData::render()
 	Row row = Row(data);
 
 	table->data.push_back(row);
+
+	table->saveData();
 }

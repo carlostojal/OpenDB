@@ -19,7 +19,7 @@ Table::Table(string name1, vector<Column> structure1)
 	structure = structure1;
 }
 
-void Table::save()
+void Table::saveStructure()
 {
 	// append to table list
 	ofstream f("data/tables.list");
@@ -33,10 +33,26 @@ void Table::save()
 
 	ofstream f1(path);
 	for (unsigned int i = 0; i < structure.size(); i++)
-	{
-		cout << structure.at(i).name << endl;
 		f1 << structure.at(i).name << ";";
-	}
 	f1 << endl;
 	f1.close();
+}
+
+void Table::saveData()
+{
+	// create/recreate table structure file
+	string path = "data/" + name + ".data";
+
+	remove(path.c_str()); // remove old file
+
+	ofstream f(path);
+	for (unsigned int i = 0; i < data.size(); i++)
+	{
+		for (unsigned int j = 0; j < data.at(i).cols.size(); j++)
+		{
+			f << data.at(i).cols.at(j).value << ";";
+		}
+		f << endl;
+	}
+	f.close();
 }

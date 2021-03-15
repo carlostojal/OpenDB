@@ -40,7 +40,7 @@ Table AddTable::render()
 	} while (menuOpt != 0);
 
 	// save in the end of execution
-	table.save();
+	table.saveStructure();
 
 	return table;
 }
